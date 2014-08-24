@@ -13,6 +13,10 @@ extension CGAffineTransform : Equatable {
         return CGAffineTransformIdentity
     }
     
+    init(a: CGFloat, b: CGFloat, c: CGFloat, d: CGFloat, tx: CGFloat, ty: CGFloat) {
+        self = CGAffineTransformMake(a, b, c, d, tx, ty)
+    }
+    
     init(tx: CGFloat, ty: CGFloat) {
         self = CGAffineTransformMakeTranslation(tx, ty)
     }
