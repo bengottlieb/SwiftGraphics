@@ -13,9 +13,9 @@ convenient as possible.
 
 ## Usage
 
-SwiftGraphics builds iOS and OSX frameworks. Just add SwiftGraphics.xcodeproj to your project and set up your depdencies appropriately.
+SwiftGraphics builds iOS and OSX frameworks. Just add SwiftGraphics.xcodeproj to your project and set up your dependencies appropriately.
 
-You can play with SwiftGraphics in Xcode 6 Playgrounds. Usew Demos/SwiftGraphicsDemos.xcworkspace.
+You can play with SwiftGraphics in Xcode 6 Playgrounds. Use Demos/SwiftGraphicsDemos.xcworkspace.
 
 ## Help Wanted
 
