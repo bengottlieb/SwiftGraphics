@@ -8,6 +8,8 @@
 
 import CoreGraphics
 
+// TODO: This code is mostly experimental, use at your own risk - see TODO.markdown
+
 public extension CGContextRef {
     func strokeEllipseInRect(rect:CGRect) {
         CGContextStrokeEllipseInRect(self, rect)
@@ -29,17 +31,28 @@ public extension CGContextRef {
         CGContextFillEllipseInRect(self, rect)
     }
 
-#if os(OSX)
-    func withColor(color:NSColor, block:() -> Void) {
+    func fillCircle(circle:Circle) {
+        CGContextFillEllipseInRect(self, circle.rect)
+    }
+
+    func with(block:() -> Void) {
         CGContextSaveGState(self)
-        CGContextSetStrokeColorWithColor(self, color.CGColor)
-        CGContextSetFillColorWithColor(self, color.CGColor)
         block()
         CGContextRestoreGState(self)
+    }
+
+#if os(OSX)
+    func withColor(color:NSColor, block:() -> Void) {
+        with {
+            CGContextSetStrokeColorWithColor(self, color.CGColor)
+            CGContextSetFillColorWithColor(self, color.CGColor)
+            block()
+        }
     }
 #endif
 }
 
+// TODO: Cannot create class methods on CGContextRef - so forced for now to use a standalone function.
 public func BitmapContext(size:CGSize) -> CGContextRef! {
     let colorspace = CGColorSpaceCreateDeviceRGB()    
     var bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedFirst.toRaw())
@@ -53,12 +66,12 @@ public extension CGImageRef {
 #if os(OSX)
 public extension CGContextRef {
 
-    var nsimage : NSImage { get { return _nsimage() } }
-
-    func _nsimage() -> NSImage {
-        let cgimage = CGBitmapContextCreateImage(self)
-        let nsimage = NSImage(CGImage:cgimage, size:cgimage.size)
-        return nsimage
+    var nsimage : NSImage {
+        get { 
+            let cgimage = CGBitmapContextCreateImage(self)
+            let nsimage = NSImage(CGImage:cgimage, size:cgimage.size)
+            return nsimage
+        }
     }
 }
 #endif

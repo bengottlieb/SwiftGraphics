@@ -66,6 +66,7 @@ public func /= (inout lhs:CGSize, rhs:CGFloat) {
     lhs = lhs / rhs
 }
 
+// TODO: Move elsewhere?
 public enum Orientation {
     case Square
     case Landscape
