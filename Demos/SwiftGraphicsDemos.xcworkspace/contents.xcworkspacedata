@@ -5,9 +5,19 @@
       location = "group:../SwiftGraphics.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SVG.playground">
+      location = "group:ArcTest/ArcTest.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:SwiftGraphicsTest.playground">
-   </FileRef>
+   <Group
+      location = "group:Playgrounds"
+      name = "Playgrounds">
+      <FileRef
+         location = "group:SVG.playground">
+      </FileRef>
+      <FileRef
+         location = "group:SwiftGraphicsTest.playground">
+      </FileRef>
+      <FileRef
+         location = "group:README.markdown">
+      </FileRef>
+   </Group>
 </Workspace>
