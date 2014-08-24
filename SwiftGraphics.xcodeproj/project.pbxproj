@@ -19,6 +19,7 @@
 		454D553119AA5E91000E3EB3 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454D553019AA5E91000E3EB3 /* CGRect.swift */; };
 		454D553319AA5EEE000E3EB3 /* Scaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454D553219AA5EEE000E3EB3 /* Scaling.swift */; };
 		454D553519AA5F0F000E3EB3 /* BezierCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454D553419AA5F0F000E3EB3 /* BezierCurve.swift */; };
+		45859DA819AA8E9400BDBF61 /* Transforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45859DA719AA8E9400BDBF61 /* Transforms.swift */; };
 		4591A94F19AA65B7004A0BDA /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454D552019AA5CFE000E3EB3 /* Geometry.swift */; };
 		4591A95019AA65B7004A0BDA /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454D552C19AA5E87000E3EB3 /* CGPoint.swift */; };
 		4591A95119AA65B7004A0BDA /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454D552E19AA5E8C000E3EB3 /* CGSize.swift */; };
@@ -61,6 +62,7 @@
 		454D553019AA5E91000E3EB3 /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGRect.swift; path = SwiftGraphics/CGRect.swift; sourceTree = "<group>"; };
 		454D553219AA5EEE000E3EB3 /* Scaling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scaling.swift; path = SwiftGraphics/Scaling.swift; sourceTree = "<group>"; };
 		454D553419AA5F0F000E3EB3 /* BezierCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BezierCurve.swift; path = SwiftGraphics/BezierCurve.swift; sourceTree = "<group>"; };
+		45859DA719AA8E9400BDBF61 /* Transforms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transforms.swift; sourceTree = "<group>"; };
 		45DA4AC419AA62A800133F32 /* SwiftGraphics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftGraphics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45DA4AC719AA62A800133F32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45DA4AC819AA62A800133F32 /* SwiftGraphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftGraphics.h; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				454D552619AA5D39000E3EB3 /* Utilities.swift */,
 				454D552819AA5D3E000E3EB3 /* Quadrant.swift */,
 				454D552A19AA5E1C000E3EB3 /* CGContext.swift */,
+				45859DA719AA8E9400BDBF61 /* Transforms.swift */,
 				454D553219AA5EEE000E3EB3 /* Scaling.swift */,
 				454D553419AA5F0F000E3EB3 /* BezierCurve.swift */,
 			);
@@ -327,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45859DA819AA8E9400BDBF61 /* Transforms.swift in Sources */,
 				454D552919AA5D3E000E3EB3 /* Quadrant.swift in Sources */,
 				454D553519AA5F0F000E3EB3 /* BezierCurve.swift in Sources */,
 				454D553319AA5EEE000E3EB3 /* Scaling.swift in Sources */,
