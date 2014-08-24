@@ -11,7 +11,13 @@ Wrap Quartz (and other related Frameworks such as CoreImage) in a nice "Swifthon
 Provide wrappers and operators to help make working with graphics primitives in swift as 
 convenient as possible.
 
-## Help
+## Usage
+
+SwiftGraphics builds iOS and OSX frameworks. Just add SwiftGraphics.xcodeproj to your project and set up your depdencies appropriately.
+
+You can play with SwiftGraphics in Xcode 6 Playgrounds. Usew Demos/SwiftGraphicsDemos.xcworkspace.
+
+## Help Wanted
 
 Your help wanted. I would definitely appreciate contributions from other members of the 
 Swift/Cocoa community. Please fork this project and submit pull requests.
