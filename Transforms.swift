@@ -8,7 +8,7 @@
 
 import CoreGraphics
 
-extension CGAffineTransform : Equatable {
+public extension CGAffineTransform {
     static func identity() -> CGAffineTransform {
         return CGAffineTransformIdentity
     }
@@ -75,9 +75,14 @@ extension CGAffineTransform : Equatable {
     var isIdentity : Bool { get { return CGAffineTransformIsIdentity(self) } }
 }
 
+extension CGAffineTransform : Equatable {
+}
+
 public func == (lhs:CGAffineTransform, rhs:CGAffineTransform) -> Bool {
     return CGAffineTransformEqualToTransform(lhs, rhs)
 }
+
+// MARK: Concatination via the + and += operators
 
 public func + (lhs:CGAffineTransform, rhs:CGAffineTransform) -> CGAffineTransform {
     return lhs.concated(rhs)
@@ -86,6 +91,8 @@ public func + (lhs:CGAffineTransform, rhs:CGAffineTransform) -> CGAffineTransfor
 public func += (inout lhs:CGAffineTransform, rhs:CGAffineTransform) {
     lhs.concat(rhs)
 }
+
+// MARK: Applying transforms to CG types
 
 public func * (lhs:CGPoint, rhs:CGAffineTransform) -> CGPoint {
     return CGPointApplyAffineTransform(lhs, rhs)

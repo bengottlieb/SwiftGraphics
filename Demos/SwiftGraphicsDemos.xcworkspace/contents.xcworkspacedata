@@ -17,6 +17,9 @@
          location = "group:SwiftGraphicsTest.playground">
       </FileRef>
       <FileRef
+         location = "group:ScratchPad.playground">
+      </FileRef>
+      <FileRef
          location = "group:README.markdown">
       </FileRef>
    </Group>
