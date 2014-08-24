@@ -15,11 +15,25 @@ extension CGPoint : Printable {
 }
 
 public extension CGPoint {
-    public init(x:CGFloat) {
+    init(_ v:(CGFloat, CGFloat)) {
+        (x, y) = v
+    }
+    
+//    init() {
+//        x = 0
+//        y = 0
+//    }
+
+//    init(_ x:CGFloat, _ y:CGFloat)) {
+//        self.x = x, y
+//    }
+
+    init(x:CGFloat) {
         self.x = x
         self.y = 0
     }
-    public init(y:CGFloat) {
+
+    init(y:CGFloat) {
         self.x = 0
         self.y = y
     }
@@ -43,10 +57,6 @@ public func * (lhs:CGFloat, rhs:CGPoint) -> CGPoint {
 
 public func / (lhs:CGPoint, rhs:CGFloat) -> CGPoint {
     return CGPoint(x:lhs.x / rhs, y:lhs.y / rhs)
-}
-
-public func / (lhs:CGFloat, rhs:CGPoint) -> CGPoint {
-    return CGPoint(x:lhs / rhs.x, y:lhs / rhs.y)
 }
 
 public func += (inout lhs:CGPoint, rhs:CGPoint) {
@@ -80,7 +90,7 @@ public extension CGPoint {
         y = sin(theta) * length
     }
 
-    var length : CGFloat { get { return sqrt(x * x + y * y) } }
+    var length : CGFloat { get { return sqrt(x ** 2 + y ** 2) } }
     var normalized : CGPoint { get { return CGPoint(x:x / length, y:y / length) } }
 }
 

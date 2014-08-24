@@ -10,13 +10,13 @@ import CoreGraphics
 
 // MARK: Scaling and alignment.
 
-enum Scaling {
+public enum Scaling {
     case None
     case Proportionally
     case ToFit
 }
 
-enum Alignment {
+public enum Alignment {
    case Center
    case Top
    case TopLeft
@@ -28,7 +28,7 @@ enum Alignment {
    case Right
 }
 
-func ScaleAndAlignRectToRect(inner:CGRect, outer:CGRect, scaling:Scaling, align:Alignment) -> CGRect {
+public func ScaleAndAlignRectToRect(inner:CGRect, outer:CGRect, scaling:Scaling, align:Alignment) -> CGRect {
     var resultRect = CGRectZero
 
     switch scaling {

@@ -59,7 +59,7 @@ class Arc : NSObject {
             let midPoint = (start + end) / 2
             let a = (midPoint - start).length
             let c = radius
-            let b = sqrt(c * c - a * a)
+            let b = sqrt(c ** 2 - a ** 2)
             let theta = atan2(end - start) + DegreesToRadians(90)
             let center = CGPoint(length:b, theta:theta) + midPoint
             return center

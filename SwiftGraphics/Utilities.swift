@@ -8,6 +8,18 @@
 
 import CoreGraphics
 
+// MARK: Math
+
+infix operator ** { associativity none precedence 160 }
+
+public func ** (lhs:Double, rhs:Double) -> Double {
+    return pow(lhs, rhs)
+}
+
+public func ** (lhs:CGFloat, rhs:CGFloat) -> CGFloat {
+    return pow(lhs, rhs)
+}
+
 // MARK: Basics
 
 public func clamp <T:Comparable> (value:T, lower:T, upper:T) -> T {

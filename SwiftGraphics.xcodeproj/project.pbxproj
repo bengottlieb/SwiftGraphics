@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4537991A19AA6C37004DF99E /* CGPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537991919AA6C37004DF99E /* CGPointTests.swift */; };
 		454D550D19AA5CE6000E3EB3 /* SwiftGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = 454D550C19AA5CE6000E3EB3 /* SwiftGraphics.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		454D551719AA5CE6000E3EB3 /* SwiftGraphicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454D551619AA5CE6000E3EB3 /* SwiftGraphicsTests.swift */; };
 		454D552119AA5CFE000E3EB3 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454D552019AA5CFE000E3EB3 /* Geometry.swift */; };
 		454D552719AA5D39000E3EB3 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454D552619AA5D39000E3EB3 /* Utilities.swift */; };
 		454D552919AA5D3E000E3EB3 /* Quadrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454D552819AA5D3E000E3EB3 /* Quadrant.swift */; };
@@ -34,12 +34,12 @@
 		4537990419AA671E004DF99E /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4537990519AA671E004DF99E /* README.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.markdown; sourceTree = "<group>"; };
 		4537990619AA6736004DF99E /* TODO.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.markdown; sourceTree = "<group>"; };
+		4537991919AA6C37004DF99E /* CGPointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointTests.swift; sourceTree = "<group>"; };
 		454D550719AA5CE6000E3EB3 /* SwiftGraphics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftGraphics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		454D550B19AA5CE6000E3EB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		454D550C19AA5CE6000E3EB3 /* SwiftGraphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftGraphics.h; sourceTree = "<group>"; };
 		454D551219AA5CE6000E3EB3 /* SwiftGraphicsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftGraphicsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		454D551519AA5CE6000E3EB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		454D551619AA5CE6000E3EB3 /* SwiftGraphicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGraphicsTests.swift; sourceTree = "<group>"; };
 		454D552019AA5CFE000E3EB3 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Geometry.swift; path = SwiftGraphics/Geometry.swift; sourceTree = "<group>"; };
 		454D552619AA5D39000E3EB3 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = SwiftGraphics/Utilities.swift; sourceTree = "<group>"; };
 		454D552819AA5D3E000E3EB3 /* Quadrant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Quadrant.swift; path = SwiftGraphics/Quadrant.swift; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 		454D551319AA5CE6000E3EB3 /* SwiftGraphics_UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				454D551619AA5CE6000E3EB3 /* SwiftGraphicsTests.swift */,
+				4537991919AA6C37004DF99E /* CGPointTests.swift */,
 				454D551419AA5CE6000E3EB3 /* Supporting Files */,
 			);
 			path = SwiftGraphics_UnitTests;
@@ -329,7 +329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				454D551719AA5CE6000E3EB3 /* SwiftGraphicsTests.swift in Sources */,
+				4537991A19AA6C37004DF99E /* CGPointTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,7 +482,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = SwiftGraphicsTests/Info.plist;
+				INFOPLIST_FILE = SwiftGraphics_UnitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -496,7 +496,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = SwiftGraphicsTests/Info.plist;
+				INFOPLIST_FILE = SwiftGraphics_UnitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
