@@ -32,10 +32,33 @@ public extension CGContextRef {
 #if os(OSX)
     func withColor(color:NSColor, block:() -> Void) {
         CGContextSaveGState(self)
-        color.set()
+        CGContextSetStrokeColorWithColor(self, color.CGColor)
+        CGContextSetFillColorWithColor(self, color.CGColor)
         block()
         CGContextRestoreGState(self)
     }
 #endif
-
 }
+
+public func BitmapContext(size:CGSize) -> CGContextRef! {
+    let colorspace = CGColorSpaceCreateDeviceRGB()    
+    var bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedFirst.toRaw())
+    return CGBitmapContextCreate(nil, UInt(size.width), UInt(size.height), 8, UInt(size.width) * 4, colorspace, bitmapInfo)
+}
+
+public extension CGImageRef {
+    var size : CGSize { get { return CGSize(width:CGFloat(CGImageGetWidth(self)), height:CGFloat(CGImageGetHeight(self))) } }
+}
+
+#if os(OSX)
+public extension CGContextRef {
+
+    var nsimage : NSImage { get { return _nsimage() } }
+
+    func _nsimage() -> NSImage {
+        let cgimage = CGBitmapContextCreateImage(self)
+        let nsimage = NSImage(CGImage:cgimage, size:cgimage.size)
+        return nsimage
+    }
+}
+#endif

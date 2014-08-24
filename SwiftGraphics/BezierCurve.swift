@@ -6,54 +6,54 @@
 //  Copyright (c) 2014 schwa.io. All rights reserved.
 //
 
-import Foundation
+import CoreGraphics
 
 public struct BezierCurve {
 
-    enum Order {
+    public enum Order {
         case Quadratic
         case Cubic
         case OrderN(Int)
     }
 
-    var start : CGPoint?
-    var controls : [CGPoint]
-    var end : CGPoint
+    public var start : CGPoint?
+    public var controls : [CGPoint]
+    public var end : CGPoint
 
-    init(controls:[CGPoint], end:CGPoint) {
+    public init(controls:[CGPoint], end:CGPoint) {
         self.controls = controls
         self.end = end
     }
 
-    init(control1:CGPoint, end:CGPoint) {
+    public init(control1:CGPoint, end:CGPoint) {
         self.controls = [control1]
         self.end = end
     }
 
-    init(control1:CGPoint, control2:CGPoint, end:CGPoint) {
+    public init(control1:CGPoint, control2:CGPoint, end:CGPoint) {
         self.controls = [control1, control2]
         self.end = end
     }
 
-    init(start:CGPoint, controls:[CGPoint], end:CGPoint) {
+    public init(start:CGPoint, controls:[CGPoint], end:CGPoint) {
         self.start = start
         self.controls = controls
         self.end = end
     }
 
-    init(start:CGPoint, control1:CGPoint, end:CGPoint) {
+    public init(start:CGPoint, control1:CGPoint, end:CGPoint) {
         self.start = start
         self.controls = [control1]
         self.end = end
     }
 
-    init(start:CGPoint, control1:CGPoint, control2:CGPoint, end:CGPoint) {
+    public init(start:CGPoint, control1:CGPoint, control2:CGPoint, end:CGPoint) {
         self.start = start
         self.controls = [control1, control2]
         self.end = end
     }
 
-    var order : Order {
+    public var order : Order {
         get {
             switch self.controls.count + 2 {
                 case 3:
@@ -65,7 +65,7 @@ public struct BezierCurve {
             }       
         }
     }
-    var points : [CGPoint] { get { return [self.start!] + self.controls + [self.end] } }
+    public var points : [CGPoint] { get { return [self.start!] + self.controls + [self.end] } }
 }
 
 extension BezierCurve : Printable {
