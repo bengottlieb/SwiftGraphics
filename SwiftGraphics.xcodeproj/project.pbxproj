@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4537991A19AA6C37004DF99E /* CGPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537991919AA6C37004DF99E /* CGPointTests.swift */; };
+		4537991D19AA788B004DF99E /* CGSizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537991C19AA788B004DF99E /* CGSizeTests.swift */; };
 		454D550D19AA5CE6000E3EB3 /* SwiftGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = 454D550C19AA5CE6000E3EB3 /* SwiftGraphics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		454D552119AA5CFE000E3EB3 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454D552019AA5CFE000E3EB3 /* Geometry.swift */; };
 		454D552719AA5D39000E3EB3 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454D552619AA5D39000E3EB3 /* Utilities.swift */; };
@@ -30,11 +31,22 @@
 		45DA4AC919AA62A800133F32 /* SwiftGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = 45DA4AC819AA62A800133F32 /* SwiftGraphics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4582DB7819AA7A6700B7F5B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 454D54FE19AA5CE6000E3EB3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 454D550619AA5CE6000E3EB3;
+			remoteInfo = SwiftGraphics_OSX;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		4537990419AA671E004DF99E /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4537990519AA671E004DF99E /* README.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.markdown; sourceTree = "<group>"; };
 		4537990619AA6736004DF99E /* TODO.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.markdown; sourceTree = "<group>"; };
 		4537991919AA6C37004DF99E /* CGPointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointTests.swift; sourceTree = "<group>"; };
+		4537991C19AA788B004DF99E /* CGSizeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGSizeTests.swift; sourceTree = "<group>"; };
 		454D550719AA5CE6000E3EB3 /* SwiftGraphics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftGraphics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		454D550B19AA5CE6000E3EB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		454D550C19AA5CE6000E3EB3 /* SwiftGraphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftGraphics.h; sourceTree = "<group>"; };
@@ -124,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				4537991919AA6C37004DF99E /* CGPointTests.swift */,
+				4537991C19AA788B004DF99E /* CGSizeTests.swift */,
 				454D551419AA5CE6000E3EB3 /* Supporting Files */,
 			);
 			path = SwiftGraphics_UnitTests;
@@ -221,6 +234,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4582DB7919AA7A6700B7F5B4 /* PBXTargetDependency */,
 			);
 			name = SwiftGraphicsTests;
 			productName = SwiftGraphicsTests;
@@ -329,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4537991D19AA788B004DF99E /* CGSizeTests.swift in Sources */,
 				4537991A19AA6C37004DF99E /* CGPointTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,6 +365,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4582DB7919AA7A6700B7F5B4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 454D550619AA5CE6000E3EB3 /* SwiftGraphics_OSX */;
+			targetProxy = 4582DB7819AA7A6700B7F5B4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		454D551819AA5CE6000E3EB3 /* Debug */ = {
