@@ -31,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4537990419AA671E004DF99E /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		4537990519AA671E004DF99E /* README.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.markdown; sourceTree = "<group>"; };
+		4537990619AA6736004DF99E /* TODO.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.markdown; sourceTree = "<group>"; };
 		454D550719AA5CE6000E3EB3 /* SwiftGraphics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftGraphics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		454D550B19AA5CE6000E3EB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		454D550C19AA5CE6000E3EB3 /* SwiftGraphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftGraphics.h; sourceTree = "<group>"; };
@@ -79,6 +82,9 @@
 		454D54FD19AA5CE6000E3EB3 = {
 			isa = PBXGroup;
 			children = (
+				4537990419AA671E004DF99E /* LICENSE */,
+				4537990519AA671E004DF99E /* README.markdown */,
+				4537990619AA6736004DF99E /* TODO.markdown */,
 				45DA4ADA19AA62C000133F32 /* Common */,
 				454D551319AA5CE6000E3EB3 /* SwiftGraphics_UnitTests */,
 				454D550919AA5CE6000E3EB3 /* SwiftGraphics_OSX */,
