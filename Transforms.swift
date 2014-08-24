@@ -91,24 +91,22 @@ public func * (lhs:CGPoint, rhs:CGAffineTransform) -> CGPoint {
     return CGPointApplyAffineTransform(lhs, rhs)
 }
 
+public func *= (inout lhs:CGPoint, rhs:CGAffineTransform) {
+    lhs = CGPointApplyAffineTransform(lhs, rhs)
+}
+
 public func * (lhs:CGSize, rhs:CGAffineTransform) -> CGSize {
     return CGSizeApplyAffineTransform(lhs, rhs)
+}
+
+public func *= (inout lhs:CGSize, rhs:CGAffineTransform) {
+    lhs = CGSizeApplyAffineTransform(lhs, rhs)
 }
 
 public func * (lhs:CGRect, rhs:CGAffineTransform) -> CGRect {
     return CGRectApplyAffineTransform(lhs, rhs)
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+public func *= (inout lhs:CGRect, rhs:CGAffineTransform) {
+    lhs = CGRectApplyAffineTransform(lhs, rhs)
+}
