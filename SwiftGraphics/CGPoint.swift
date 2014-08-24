@@ -84,7 +84,7 @@ public extension CGPoint {
     var normalized : CGPoint { get { return CGPoint(x:x / length, y:y / length) } }
 }
 
-func atan2(point:CGPoint) -> CGFloat {
+public func atan2(point:CGPoint) -> CGFloat {
     return atan2(point.y, point.x)
 }
 

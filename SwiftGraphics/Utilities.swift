@@ -10,25 +10,25 @@ import CoreGraphics
 
 // MARK: Basics
 
-func clamp <T:Comparable> (value:T, lower:T, upper:T) -> T {
+public func clamp <T:Comparable> (value:T, lower:T, upper:T) -> T {
     return max(min(value, upper), lower)
 }
 
 // MARK: lerp
 
-func lerp(lower:Double, upper:Double, factor:Double) -> Double {
+public func lerp(lower:Double, upper:Double, factor:Double) -> Double {
     return (1.0 - factor) * lower + factor * upper
 }
 
-func lerp(lower:CGPoint, upper:CGPoint, factor:CGFloat) -> CGPoint {
+public func lerp(lower:CGPoint, upper:CGPoint, factor:CGFloat) -> CGPoint {
     return (1.0 - factor) * lower + factor * upper
 }
 
-func lerp(lower:CGSize, upper:CGSize, factor:CGFloat) -> CGSize {
+public func lerp(lower:CGSize, upper:CGSize, factor:CGFloat) -> CGSize {
     return (1.0 - factor) * lower + factor * upper
 }
 
-func lerp(lower:CGRect, upper:CGRect, factor:CGFloat) -> CGRect {
+public func lerp(lower:CGRect, upper:CGRect, factor:CGFloat) -> CGRect {
     return CGRect(
         origin:lerp(lower.origin, upper.origin, factor),
         size:lerp(lower.size, upper.size, factor)
@@ -37,11 +37,19 @@ func lerp(lower:CGRect, upper:CGRect, factor:CGFloat) -> CGRect {
 
 // MARK: Degrees/Radians
 
-func DegreesToRadians(v:Double) -> Double {
+public func DegreesToRadians(v:CGFloat) -> CGFloat {
+    return v * CGFloat(M_PI) / 180
+}
+
+public func RadiansToDegrees(v:CGFloat) -> CGFloat {
+    return v * 180 / CGFloat(M_PI)
+}
+
+public func DegreesToRadians(v:Double) -> Double {
     return v * M_PI / 180
 }
 
-func RadiansToDegrees(v:Double) -> Double {
+public func RadiansToDegrees(v:Double) -> Double {
     return v * 180 / M_PI
 }
 
