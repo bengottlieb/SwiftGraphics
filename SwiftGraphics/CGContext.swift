@@ -11,6 +11,14 @@ import CoreGraphics
 // TODO: This code is mostly experimental, use at your own risk - see TODO.markdown
 
 public extension CGContextRef {
+
+class func BitmapContext(size:CGSize) -> CGContextRef! {
+    let colorspace = CGColorSpaceCreateDeviceRGB()    
+    var bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedFirst.toRaw())
+    return CGBitmapContextCreate(nil, UInt(size.width), UInt(size.height), 8, UInt(size.width) * 4, colorspace, bitmapInfo)
+}
+
+
     func strokeEllipseInRect(rect:CGRect) {
         CGContextStrokeEllipseInRect(self, rect)
     }
