@@ -5,6 +5,9 @@
       location = "group:../SwiftGraphics.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:SwiftGraphicsDemo/SwiftGraphicsDemo.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:ArcTest/ArcTest.xcodeproj">
    </FileRef>
    <Group
