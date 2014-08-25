@@ -13,3 +13,5 @@ t.scale(100,100)
 var p = CGPoint(x:1,y:1)
 
 p * t
+
+t.values

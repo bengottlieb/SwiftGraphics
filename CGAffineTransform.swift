@@ -9,8 +9,13 @@
 import CoreGraphics
 
 public extension CGAffineTransform {
+
     static func identity() -> CGAffineTransform {
         return CGAffineTransformIdentity
+    }
+    
+    init() {
+        self = CGAffineTransformIdentity
     }
     
     init(a: CGFloat, b: CGFloat, c: CGFloat, d: CGFloat, tx: CGFloat, ty: CGFloat) {
@@ -75,6 +80,8 @@ public extension CGAffineTransform {
     var isIdentity : Bool { get { return CGAffineTransformIsIdentity(self) } }
 }
 
+// MARK: Equatable
+
 extension CGAffineTransform : Equatable {
 }
 
@@ -117,3 +124,27 @@ public func * (lhs:CGRect, rhs:CGAffineTransform) -> CGRect {
 public func *= (inout lhs:CGRect, rhs:CGAffineTransform) {
     lhs = CGRectApplyAffineTransform(lhs, rhs)
 }
+
+// MARK: Converting transforms to/from arrays
+
+public extension CGAffineTransform {
+    init(v:[CGFloat]) {
+        assert(v.count == 6)
+        self = CGAffineTransformMake(v[0], v[1], v[2], v[3], v[4], v[5])
+    }
+    
+    var values:[CGFloat] {
+        get {
+            return [a,b,c,d,tx,ty]
+        }
+        set(v) {
+            assert(v.count == 6)
+            (a, b, c, d, tx, ty) = (v[0], v[1], v[2], v[3], v[4], v[6])
+        }
+    }
+}
+
+
+
+
+
