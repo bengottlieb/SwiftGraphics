@@ -22,11 +22,7 @@ class DemoView: NSView {
         let radius = CGFloat(2)
         for p in self.points {
             context.withColor(NSColor.blackColor()) {
-                let linePoints = [
-                    CGPoint(x:p.x - radius, y:p.y), CGPoint(x:p.x + radius, y:p.y),
-                    CGPoint(x:p.x, y:p.y - radius), CGPoint(x:p.x, y:p.y + radius),
-                ]
-                context.strokeLine(linePoints)
+                context.strokeSaltire(CGRect(center:p, size:CGSize(w:4, h:4)))
             }
         }
     }

@@ -11,9 +11,6 @@ import CoreGraphics
 // MARK: CGSize
 
 public extension CGSize {
-    init(_ v:(CGFloat, CGFloat)) {
-        (width, height) = v
-    }
 
     init(w:CGFloat, h:CGFloat) {
         (width, height) = (w, h)
@@ -88,4 +85,16 @@ public extension CGSize {
         }
     } }
 }
+
+
+public extension CGSize {
+    init(_ v:(CGFloat, CGFloat)) {
+        (width, height) = v
+    }
+
+    var asTuple : (CGFloat, CGFloat) { get { return (width, height) } }
+}
+
+
+
 

@@ -53,3 +53,7 @@ public extension CGRect {
     }
 }
 
+
+public extension CGRect {
+    var asTuple : (CGFloat, CGFloat, CGFloat, CGFloat) { get { return (origin.x, origin.y, size.width, size.height) } }
+}

@@ -25,7 +25,7 @@ public extension CGContextRef {
     func strokeLine(p1:CGPoint, _ p2:CGPoint) {
         self.strokeLine([p1, p2])
     }
-
+    
     func fillCircle(#center:CGPoint, radius:CGFloat) {
         let rect = CGRect(center:center, size:CGSize(width:radius * 2, height:radius * 2))
         CGContextFillEllipseInRect(self, rect)
@@ -75,3 +75,28 @@ public extension CGContextRef {
     }
 }
 #endif
+
+
+public extension CGContextRef {
+
+    func strokeCross(rect:CGRect) {
+        let (x, y, w, h) = rect.asTuple
+    
+        let linePoints = [
+            CGPoint(x:x - w * 0.5, y:y), CGPoint(x:x + h * 0.5, y:y),
+            CGPoint(x:x, y:y - w * 0.5), CGPoint(x:x, y:y + h * 0.5),
+        ]
+        self.strokeLine(linePoints)
+    }
+
+    func strokeSaltire(rect:CGRect) {
+        let (x, y, w, h) = rect.asTuple
+    
+        let linePoints = [
+            CGPoint(x:x - w * 0.5, y:y - h * 0.5), CGPoint(x:x + h * 0.5, y:y + w * 0.6),
+            CGPoint(x:x - w * 0.5, y:y + h * 0.5), CGPoint(x:x + h * 0.5, y:y - w * 0.6),
+        ]
+        self.strokeLine(linePoints)
+    }
+
+}

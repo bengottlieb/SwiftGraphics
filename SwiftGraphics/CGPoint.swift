@@ -14,20 +14,10 @@ extension CGPoint : Printable {
     public var description: String { get { return "\(x), \(y)" } }
 }
 
+// MARK: Init
+
 public extension CGPoint {
-    init(_ v:(CGFloat, CGFloat)) {
-        (x, y) = v
-    }
     
-//    init() {
-//        x = 0
-//        y = 0
-//    }
-
-//    init(_ x:CGFloat, _ y:CGFloat)) {
-//        self.x = x, y
-//    }
-
     init(x:CGFloat) {
         self.x = x
         self.y = 0
@@ -39,6 +29,8 @@ public extension CGPoint {
     }
 }
 
+// MARK: Arithmetic
+
 public func + (lhs:CGPoint, rhs:CGPoint) -> CGPoint {
     return CGPoint(x:lhs.x + rhs.x, y:lhs.y + rhs.y)
 }
@@ -46,6 +38,8 @@ public func + (lhs:CGPoint, rhs:CGPoint) -> CGPoint {
 public func - (lhs:CGPoint, rhs:CGPoint) -> CGPoint {
     return CGPoint(x:lhs.x - rhs.x, y:lhs.y - rhs.y)
 }
+
+// MARK: Arithmetic (with scalar)
 
 public func * (lhs:CGPoint, rhs:CGFloat) -> CGPoint {
     return CGPoint(x:lhs.x * rhs, y:lhs.y * rhs)
@@ -58,6 +52,8 @@ public func * (lhs:CGFloat, rhs:CGPoint) -> CGPoint {
 public func / (lhs:CGPoint, rhs:CGFloat) -> CGPoint {
     return CGPoint(x:lhs.x / rhs, y:lhs.y / rhs)
 }
+
+// MARK: Arithmetic Assignment 
 
 public func += (inout lhs:CGPoint, rhs:CGPoint) {
     lhs = lhs + rhs
@@ -75,6 +71,8 @@ public func /= (inout lhs:CGPoint, rhs:CGFloat) {
     lhs = lhs / rhs
 }
 
+// MARK: Misc
+
 public extension CGPoint {
     func clamped(rect:CGRect) -> CGPoint {
         return CGPoint(
@@ -83,6 +81,8 @@ public extension CGPoint {
         )
     }
 }
+
+// MARK: Trig
 
 public extension CGPoint {
     init(length:CGFloat, theta:CGFloat) {
@@ -97,4 +97,17 @@ public extension CGPoint {
 public func atan2(point:CGPoint) -> CGFloat {
     return atan2(point.y, point.x)
 }
+
+// MARK: Converting to/from tuples
+
+public extension CGPoint {
+    init(_ v:(CGFloat, CGFloat)) {
+        (x, y) = v
+    }
+
+    var asTuple : (CGFloat, CGFloat) { get { return (x, y) } }
+}
+
+
+
 
