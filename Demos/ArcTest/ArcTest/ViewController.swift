@@ -10,7 +10,7 @@ import Cocoa
 
 class ViewController: NSViewController {
 
-    var arc : Arc = Arc()
+    var arc : TestArc = TestArc()
         
     @IBOutlet var arcView : ArcView!
                             

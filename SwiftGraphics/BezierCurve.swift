@@ -53,6 +53,12 @@ public struct BezierCurve {
         self.end = end
     }
 
+    public init(points:[CGPoint]) {
+        self.start = points[0]
+        self.controls = Array(points[1..<points.count - 1])
+        self.end = points[points.count - 1]
+    }
+
     public var order : Order {
         get {
             switch self.controls.count + 2 {
@@ -81,7 +87,7 @@ extension BezierCurve : Printable {
 public extension BezierCurve {
     func increasedOrder() -> BezierCurve {
 //        assert(self.order == Order.Quadratic)
-        assert(self.points.count == 1)
+        assert(self.controls.count == 1)
     
         let CP1 = points[0] + ((2.0 / 3.0) * (points[1] - points[0]))
         let CP2 = points[2] + ((2.0 / 3.0) * (points[1] - points[2]))

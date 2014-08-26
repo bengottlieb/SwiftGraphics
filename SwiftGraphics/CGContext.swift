@@ -76,25 +76,20 @@ public extension CGContextRef {
 }
 #endif
 
-
 public extension CGContextRef {
 
     func strokeCross(rect:CGRect) {
-        let (x, y, w, h) = rect.asTuple
-    
         let linePoints = [
-            CGPoint(x:x - w * 0.5, y:y), CGPoint(x:x + h * 0.5, y:y),
-            CGPoint(x:x, y:y - w * 0.5), CGPoint(x:x, y:y + h * 0.5),
+            CGPoint(x:rect.minX, y:rect.midY), CGPoint(x:rect.maxX, y:rect.midY),
+            CGPoint(x:rect.midX, y:rect.minY), CGPoint(x:rect.midX, y:rect.maxY),
         ]
         self.strokeLine(linePoints)
     }
 
-    func strokeSaltire(rect:CGRect) {
-        let (x, y, w, h) = rect.asTuple
-    
+    func strokeSaltire(rect:CGRect) {    
         let linePoints = [
-            CGPoint(x:x - w * 0.5, y:y - h * 0.5), CGPoint(x:x + h * 0.5, y:y + w * 0.6),
-            CGPoint(x:x - w * 0.5, y:y + h * 0.5), CGPoint(x:x + h * 0.5, y:y - w * 0.6),
+            CGPoint(x:rect.minX, y:rect.minY), CGPoint(x:rect.maxX, y:rect.maxY),
+            CGPoint(x:rect.minX, y:rect.maxY), CGPoint(x:rect.maxX, y:rect.minY),
         ]
         self.strokeLine(linePoints)
     }

@@ -16,6 +16,7 @@
 		45B4203319A8F0E1002ACE7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45B4203119A8F0E1002ACE7E /* Main.storyboard */; };
 		45B4203F19A8F0E2002ACE7E /* ArcTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B4203E19A8F0E2002ACE7E /* ArcTestTests.swift */; };
 		45B4204919A8F0FE002ACE7E /* ArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B4204819A8F0FE002ACE7E /* ArcView.swift */; };
+		45FCB65619AC69EE0069DA07 /* TestArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FCB65519AC69EE0069DA07 /* TestArc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		45B4203D19A8F0E2002ACE7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45B4203E19A8F0E2002ACE7E /* ArcTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcTestTests.swift; sourceTree = "<group>"; };
 		45B4204819A8F0FE002ACE7E /* ArcView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcView.swift; sourceTree = "<group>"; };
+		45FCB65519AC69EE0069DA07 /* TestArc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestArc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				45B4202D19A8F0E1002ACE7E /* AppDelegate.swift */,
 				45B4204819A8F0FE002ACE7E /* ArcView.swift */,
 				456E1A4819A94DA000BF7209 /* Arc.swift */,
+				45FCB65519AC69EE0069DA07 /* TestArc.swift */,
 				45B4202F19A8F0E1002ACE7E /* Images.xcassets */,
 				45B4203119A8F0E1002ACE7E /* Main.storyboard */,
 				45B4202719A8F0E1002ACE7E /* Supporting Files */,
@@ -294,6 +297,7 @@
 				45B4202E19A8F0E1002ACE7E /* AppDelegate.swift in Sources */,
 				45B4204919A8F0FE002ACE7E /* ArcView.swift in Sources */,
 				45B4202C19A8F0E1002ACE7E /* ViewController.swift in Sources */,
+				45FCB65619AC69EE0069DA07 /* TestArc.swift in Sources */,
 				45B4202A19A8F0E1002ACE7E /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

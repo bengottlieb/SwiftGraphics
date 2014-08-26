@@ -12,7 +12,7 @@ import SwiftGraphics
 
 class ArcView: NSView {
 
-    var arc : Arc!
+    var arc : TestArc!
     var handles : [Handle]!
     var activeHandle : Int?
 
@@ -40,14 +40,19 @@ class ArcView: NSView {
         
         context.withColor(NSColor.grayColor()) {
             context.strokeLine(P0, P1)
-            context.fillCircle(center:midPoint, radius:2)
-            context.strokeLine(center, midPoint)
+//            context.fillCircle(center:midPoint, radius:2)
+//            context.strokeLine(center, midPoint)
             context.fillCircle(center:center, radius:2)
         }
         
-        context.withColor(NSColor.blackColor()) {
-            context.strokeEllipseInRect(CGRect(center:center, size:CGSize(width:radius * 2, height:radius * 2)))
-        }
+//        context.withColor(NSColor.blackColor()) {
+//            context.strokeEllipseInRect(CGRect(center:center, size:CGSize(width:radius * 2, height:radius * 2)))
+//        }
+        
+        
+        let goodArc = Arc.arcWithSVGDefinition(x0:P0.x, y0:P0.y, rx:arc.rx, ry:arc.ry, angle:arc.angle, largeArcFlag:arc.largeArc, sweepFlag:arc.sweep, x:P1.x, y:P1.y)
+        context.stroke(goodArc)
+        
     }
 
     override func mouseDown(theEvent: NSEvent!) {

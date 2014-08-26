@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9CC845EB-A80B-4217-9EA7-74DA5577E9F2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SwiftGraphicsDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>575D880AECD46D5450DCE1653E0F6C244B39D702</key>
+		<string>github.com:schwa/SwiftGraphics.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Demos/SwiftGraphicsDemo/SwiftGraphicsDemo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>575D880AECD46D5450DCE1653E0F6C244B39D702</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:schwa/SwiftGraphics.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>575D880AECD46D5450DCE1653E0F6C244B39D702</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>575D880AECD46D5450DCE1653E0F6C244B39D702</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SwiftGraphics</string>
+		</dict>
+	</array>
+</dict>
+</plist>
