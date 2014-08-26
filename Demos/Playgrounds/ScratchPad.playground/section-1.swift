@@ -1,8 +1,6 @@
 // Playground - noun: a place where people can play
 
-import Cocoa
 import SwiftGraphics 
-
 
 typealias Transform = CGAffineTransform
 
@@ -15,3 +13,4 @@ var p = CGPoint(x:1,y:1)
 p * t
 
 t.values
+

@@ -12,12 +12,11 @@ import CoreGraphics
 
 public extension CGContextRef {
 
-class func BitmapContext(size:CGSize) -> CGContextRef! {
-    let colorspace = CGColorSpaceCreateDeviceRGB()    
-    var bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedFirst.toRaw())
-    return CGBitmapContextCreate(nil, UInt(size.width), UInt(size.height), 8, UInt(size.width) * 4, colorspace, bitmapInfo)
-}
-
+    class func bitmapContext(size:CGSize) -> CGContextRef! {
+        let colorspace = CGColorSpaceCreateDeviceRGB()    
+        var bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedFirst.toRaw())
+        return CGBitmapContextCreate(nil, UInt(size.width), UInt(size.height), 8, UInt(size.width) * 4, colorspace, bitmapInfo)
+    }
 
     func strokeEllipseInRect(rect:CGRect) {
         CGContextStrokeEllipseInRect(self, rect)
@@ -58,13 +57,6 @@ class func BitmapContext(size:CGSize) -> CGContextRef! {
         }
     }
 #endif
-}
-
-// TODO: Cannot create class methods on CGContextRef - so forced for now to use a standalone function.
-public func BitmapContext(size:CGSize) -> CGContextRef! {
-    let colorspace = CGColorSpaceCreateDeviceRGB()    
-    var bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedFirst.toRaw())
-    return CGBitmapContextCreate(nil, UInt(size.width), UInt(size.height), 8, UInt(size.width) * 4, colorspace, bitmapInfo)
 }
 
 public extension CGImageRef {
