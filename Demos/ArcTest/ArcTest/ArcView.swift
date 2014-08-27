@@ -12,7 +12,14 @@ import SwiftGraphics
 
 class ArcView: NSView {
 
-    var arc : TestArc!
+    var SVGArc : SVGArcParameters! { didSet {
+        self.handles = [
+            Handle(position:CGPoint(x:SVGArc.x0, y:SVGArc.y0)),
+            Handle(position:CGPoint(x:SVGArc.x, y:SVGArc.y)),
+        ]
+        self.arc = Arc.arcWithSVGDefinition(SVGArc)
+        } }
+    var arc : Arc! { didSet { self.needsDisplay = true } }
     var handles : [Handle]!
     var activeHandle : Int?
 
@@ -21,8 +28,12 @@ class ArcView: NSView {
 
         let context = NSGraphicsContext.currentContext().CGContext
 
+        if let arc = self.arc {
+            context.stroke(arc)
+            }
+
         for (index, handle) in enumerate(handles) {
-            var color = NSColor.blackColor()
+            var color = NSColor.blueColor()
             if activeHandle == index {
                 color = NSColor.redColor()
             }
@@ -32,26 +43,6 @@ class ArcView: NSView {
             }
         }
 
-        let P0 = handles[0].position
-        let P1 = handles[1].position
-        let midPoint = (P0 + P1) * 0.5
-        let radius = max(arc.rx, arc.ry)
-        let center = arc.center
-        
-        context.withColor(NSColor.grayColor()) {
-            context.strokeLine(P0, P1)
-//            context.fillCircle(center:midPoint, radius:2)
-//            context.strokeLine(center, midPoint)
-            context.fillCircle(center:center, radius:2)
-        }
-        
-//        context.withColor(NSColor.blackColor()) {
-//            context.strokeEllipseInRect(CGRect(center:center, size:CGSize(width:radius * 2, height:radius * 2)))
-//        }
-        
-        
-        let goodArc = Arc.arcWithSVGDefinition(x0:P0.x, y0:P0.y, rx:arc.rx, ry:arc.ry, angle:arc.angle, largeArcFlag:arc.largeArc, sweepFlag:arc.sweep, x:P1.x, y:P1.y)
-        context.stroke(goodArc)
         
     }
 
@@ -67,6 +58,9 @@ class ArcView: NSView {
         if let activeHandle = activeHandle {
             let location = self.convertPoint(theEvent.locationInWindow, fromView:nil)
             self.handles[activeHandle].position = location
+            
+            
+            
             self.needsDisplay = true
         }
     }

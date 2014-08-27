@@ -15,22 +15,6 @@ enum CircularDirection {
     case CounterClockwise
     }
 
-struct QuartzArc {
-    var center:CGPoint
-    var radius:CGFloat
-    var startAngle:CGFloat
-    var endAngle:CGFloat
-    var clockwise:CircularDirection
-}
-
-struct JavaArc {
-    var extent:CGFloat // endAngle
-    var size:CGSize
-    var start:CGFloat // startAngle
-    var topLeft:CGPoint
-    var angle:CGFloat // ANGLE - NOT in java arc
-}
-
 struct Arc {
     var center:CGPoint = CGPointZero
     var size:CGSize = CGSizeZero
@@ -51,6 +35,7 @@ extension CGContextRef {
     
         CGContextConcatCTM(self, transform)
 
+        println("\(arc.startAngle), \(arc.endAngle)")
         CGContextAddArc(self, arc.center.x, arc.center.y, radius, arc.startAngle, arc.endAngle, 1)
         CGContextStrokePath(self)
 
@@ -63,11 +48,25 @@ extension CGContextRef {
 // * AffineTransform.getRotateInstance
 //     *     (angle, arc.getX()+arc.getWidth()/2, arc.getY()+arc.getHeight()/2);
 
+struct SVGArcParameters {
+   var x0:CGFloat
+   var y0:CGFloat
+   var rx:CGFloat
+   var ry:CGFloat
+   var angle:CGFloat
+   var largeArcFlag:Bool
+   var sweepFlag:Bool
+   var x:CGFloat
+   var y:CGFloat
+}
+
+
 extension Arc {
 
-    static func arcWithSVGDefinition(#x0:CGFloat, y0:CGFloat, rx:CGFloat, ry:CGFloat, angle:CGFloat, largeArcFlag:Bool, sweepFlag:Bool, x:CGFloat, y:CGFloat) -> Arc {
-        return computeArc(x0, y0, rx, ry, angle, largeArcFlag, sweepFlag, x, y)
+    static func arcWithSVGDefinition(definition:SVGArcParameters) -> Arc! {
+        return computeArc(definition.x0, definition.y0, definition.rx, definition.ry, definition.angle, definition.largeArcFlag, definition.sweepFlag, definition.x, definition.y)
     }
+
 
 }
 
@@ -155,8 +154,8 @@ func computeArc(x0:CGFloat, y0:CGFloat, rx:CGFloat, ry:CGFloat, angle:CGFloat, l
     var arc = Arc()
     arc.center = CGPoint(x:cx, y:cy)
     arc.size = CGSize(width:rx * 2, height:ry * 2)
-    arc.startAngle = -angleStart
-    arc.endAngle = -angleExtent
+    arc.startAngle = DegreesToRadians(-angleStart)
+    arc.endAngle = DegreesToRadians(-angleExtent)
     arc.rotation = angle
     return arc
 }
