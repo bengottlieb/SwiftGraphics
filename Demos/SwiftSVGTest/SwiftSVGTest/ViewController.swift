@@ -7,10 +7,14 @@
 //
 
 import Cocoa
+import WebKit
 
 class ViewController: NSViewController {
 
     @IBOutlet var bezierPathView : BezierPathView!  
+    @IBOutlet var webView : WebView!
+
+    var XMLDocument : NSXMLDocument!
                                                      
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,8 +22,16 @@ class ViewController: NSViewController {
 
     override var representedObject: AnyObject? {
         didSet {
-            let bezierPath = self.representedObject as NSBezierPath
-            self.bezierPathView.bezierPath = bezierPath
+            XMLDocument = self.representedObject as? NSXMLDocument
+
+            var parser = SVGParser()
+            parser.parseElement(XMLDocument.rootElement())
+
+            let document = parser.document
+            bezierPathView.document = document
+
+
+//            self.bezierPathView.bezierPath = bezierPath
         }                                    
     }
 }

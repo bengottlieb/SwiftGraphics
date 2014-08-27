@@ -18,6 +18,10 @@ public extension CGContextRef {
         return CGBitmapContextCreate(nil, UInt(size.width), UInt(size.height), 8, UInt(size.width) * 4, colorspace, bitmapInfo)
     }
 
+    func strokeRect(rect:CGRect) {
+        CGContextStrokeRect(self, rect)
+    }
+
     func strokeEllipseInRect(rect:CGRect) {
         CGContextStrokeEllipseInRect(self, rect)
     }
@@ -37,7 +41,7 @@ public extension CGContextRef {
         let rect = CGRect(center:center, size:CGSize(width:radius * 2, height:radius * 2))
         CGContextFillEllipseInRect(self, rect)
     }
-
+    
     func fillCircle(circle:Circle) {
         CGContextFillEllipseInRect(self, circle.rect)
     }

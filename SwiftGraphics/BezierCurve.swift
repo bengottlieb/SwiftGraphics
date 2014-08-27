@@ -93,4 +93,5 @@ public extension BezierCurve {
         let CP2 = points[2] + ((2.0 / 3.0) * (points[1] - points[2]))
         return BezierCurve(start:start!, controls:[CP1, CP2], end:end)
     }
+    
 }

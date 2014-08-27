@@ -8,15 +8,18 @@
 
 import Cocoa
 
+import SwiftGraphics
+
 class BezierPathView: NSView {
 
-    var bezierPath : NSBezierPath?
+    var document : SVGDocument!
 
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
 
-        if let bezierPath = bezierPath {
-            bezierPath.stroke()
+        let context = NSGraphicsContext.currentContext().CGContext
+        if let document = document {
+            context.draw(document)
         }
     }
 }

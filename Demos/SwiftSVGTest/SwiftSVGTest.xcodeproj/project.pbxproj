@@ -15,6 +15,7 @@
 		4550066019AE48B0008CEB26 /* SwiftSVGTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4550065F19AE48B0008CEB26 /* SwiftSVGTestTests.swift */; };
 		4550067719AE48EC008CEB26 /* SwiftGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4550067019AE48D8008CEB26 /* SwiftGraphics.framework */; };
 		4550067B19AE4BA5008CEB26 /* BezierPathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4550067A19AE4BA5008CEB26 /* BezierPathView.swift */; };
+		456A7FD019AE5FA200EA3EB3 /* SVGParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456A7FCF19AE5FA200EA3EB3 /* SVGParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		4550065F19AE48B0008CEB26 /* SwiftSVGTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSVGTestTests.swift; sourceTree = "<group>"; };
 		4550066919AE48D8008CEB26 /* SwiftGraphics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftGraphics.xcodeproj; path = ../../SwiftGraphics.xcodeproj; sourceTree = "<group>"; };
 		4550067A19AE4BA5008CEB26 /* BezierPathView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BezierPathView.swift; sourceTree = "<group>"; };
+		456A7FCF19AE5FA200EA3EB3 /* SVGParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVGParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				4550064C19AE48B0008CEB26 /* ViewController.swift */,
 				4550064E19AE48B0008CEB26 /* Document.swift */,
 				4550067A19AE4BA5008CEB26 /* BezierPathView.swift */,
+				456A7FCF19AE5FA200EA3EB3 /* SVGParser.swift */,
 				4550065019AE48B0008CEB26 /* Images.xcassets */,
 				4550065219AE48B0008CEB26 /* Main.storyboard */,
 				4550064819AE48B0008CEB26 /* Supporting Files */,
@@ -287,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				456A7FD019AE5FA200EA3EB3 /* SVGParser.swift in Sources */,
 				4550067B19AE4BA5008CEB26 /* BezierPathView.swift in Sources */,
 				4550064D19AE48B0008CEB26 /* ViewController.swift in Sources */,
 				4550064B19AE48B0008CEB26 /* main.swift in Sources */,
