@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SwiftSVGTest/SwiftSVGTest.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:../SwiftGraphics.xcodeproj">
    </FileRef>
    <FileRef
