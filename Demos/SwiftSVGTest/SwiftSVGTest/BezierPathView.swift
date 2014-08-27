@@ -15,10 +15,8 @@ class BezierPathView: NSView {
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
 
-        // Drawing code here.
         if let bezierPath = bezierPath {
             bezierPath.stroke()
         }
     }
-    
 }

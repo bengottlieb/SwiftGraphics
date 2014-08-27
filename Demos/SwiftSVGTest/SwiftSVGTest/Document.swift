@@ -45,14 +45,11 @@ class Document: NSDocument {
         let windowController = storyboard.instantiateInitialController() as NSWindowController
         self.addWindowController(windowController)  
         windowController.representedObject = self.bezierPath
-        
     }
 
     override func readFromData(data: NSData?, ofType typeName: String?, error outError: NSErrorPointer) -> Bool {
         //outError.memory = NSError.errorWithDomain(NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
-        
-        let document = NSXMLDocument(data:data!, options:0, error:nil)
-        
+        let document = NSXMLDocument(data:data!, options:0, error:nil)        
         let pathElements = document.nodesForXPath("//path", error:nil)!
         let pathElement = pathElements[0] as? NSXMLElement
         let path = pathElement!.attributeForName("d")!.stringValue
@@ -62,7 +59,6 @@ class Document: NSDocument {
         self.bezierPath = renderCommands(commands)        
         if self.windowControllers.count > 0 {
             if let mainWindowController = self.windowControllers[0] as? NSWindowController {
-            
                 mainWindowController.representedObject = bezierPath
             }
         }
@@ -317,8 +313,6 @@ func outputPath(commands : [Command]) -> [Atom]! {
 func renderCommands(commands : [Command]) -> NSBezierPath {
     var bezier = NSBezierPath()
     
-    var controlPoints: [CGPoint] = []
-    
     for command in commands {
         switch command {
             case .MoveTo(let relative, let xy):
@@ -360,66 +354,36 @@ func renderCommands(commands : [Command]) -> NSBezierPath {
                 }
                 bezier.lineToPoint(p)
             case .BezierCurveTo(let relative, let curve):
-//                assert(relative == false)
                 switch curve.order {
                     case .Quadratic:
+//                        assert(relative == false)
                         var curve = curve
                         curve.start = bezier.currentPoint
-                        controlPoints += curve.points
                         curve = curve.increasedOrder()
-                        bezier.curveToPoint(curve.end, controlPoint1:curve.controls[0], controlPoint2:curve.controls[1])
-                        controlPoints += curve.points
+                        let delta = relative ? bezier.currentPoint : CGPointZero
+                        let end = curve.end + delta
+                        let C0 = curve.controls[0] + delta
+                        let C1 = curve.controls[1] + delta
+                        bezier.curveToPoint(end, controlPoint1:C0, controlPoint2:C1)
                     case .Cubic:
-                        bezier.curveToPoint(curve.end, controlPoint1:curve.controls[0], controlPoint2:curve.controls[1])
                         var curve = curve
-                        curve.start = bezier.currentPoint
-                        controlPoints += curve.points
+                        curve.start = bezier.currentPoint                        
+                        let delta = relative ? bezier.currentPoint : CGPointZero
+                        let end = curve.end + delta
+                        let C0 = curve.controls[0] + delta
+                        let C1 = curve.controls[1] + delta
+                        bezier.curveToPoint(end, controlPoint1:C0, controlPoint2:C1)
                     default:
                         println("Error: Cannot render arbitrary n-order bezier curves.")
                 }
             case .EllipticalArc(let relative, let rxy, let xrotation, let largeArcFlag, let sweepFlag, let xy):
-                println("Not EllipticalArc \(command)")
-                
-                
-//                bezier.appendBezierPathWithArcWithCenter(<#center: NSPoint#>, radius: <#CGFloat#>, startAngle: <#CGFloat#>, endAngle: <#CGFloat#>, clockwise: <#Bool#>)
-            
+                println("Not handled \(command)")
+                assert(false)                
             default:
                 println("Not handled \(command)")
                 assert(false)
         }
     }
     
-    for c in controlPoints {
-        let rect = CGRect(x:c.x - 2.5, y:c.y - 2.5, width:5, height:5)
-        bezier.appendBezierPathWithOvalInRect(rect)
-    }
     return bezier
 }
-
-// #############################################################################
-
-//var path = "M 100 100 L 300 100 L 200 300 z"
-////var path = "M100,200 C100,100 250,100 250,200 S400,300 400,200"
-////var path = "M600,800 C625,700 725,700 750,800 S875,900 900,800"
-////var path = "M0,0 H100 V100 H0 V0"
-////var path = "M0,0 h100 v100 h-100 v-100"
-//
-////let path = "M600,350 l 50,-25"
-////+ "a25,25 -30 0,1 50,-25 l 50,-25"
-////+ "a25,50 -30 0,1 50,-25 l 50,-25"
-////+ "a25,75 -30 0,1 50,-25 l 50,-25" 
-////+ "a25,100 -30 0,1 50,-25 l 50,-25"
-//
-//let atoms = parsePath(path)
-//let commands = parseAtoms(atoms)
-//
-////atomsToString(outputPath(commands))
-// 
-//
-//let bezier = renderCommands(commands)
-//
-//
-//
-//
-//
-//
