@@ -12,7 +12,7 @@ import SwiftGraphics
 
 class BezierPathView: NSView {
 
-    var document : SVGDocument!
+    var document : SVGDocument! { didSet { self.needsDisplay = true } }
 
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)

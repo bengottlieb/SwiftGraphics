@@ -92,14 +92,52 @@ public extension CGMutablePath {
     }
 }
 
-//internal func MyApplier(info:UnsafeMutablePointer<Void>, element:UnsafePointer<CGPathElement>) -> Void {
-//    println("Element")
+public extension CGPath {
+
+    func dump() {
+        CGPathApplyWithBlock(self) {
+            (elementPtr:UnsafePointer<CGPathElement>) -> Void in
+            let element : CGPathElement = elementPtr.memory
+
+                switch element.type.value {
+                    case kCGPathElementMoveToPoint.value:
+                        println("kCGPathElementMoveToPoint")
+                        let point = element.points.memory
+                        println(point)
+                    case kCGPathElementAddLineToPoint.value:
+                        println("kCGPathElementAddLineToPoint")
+                        let point = element.points.memory
+                        println(point)
+                    case kCGPathElementAddQuadCurveToPoint.value:
+                        println("kCGPathElementAddQuadCurveToPoint")
+                        let point = element.points.memory
+                        println(point)
+                        let point2 = element.points.advancedBy(1).memory
+                        println(point2)
+                    case kCGPathElementAddCurveToPoint.value:
+                        println("kCGPathElementAddCurveToPoint")
+                        let point = element.points.memory
+                        println(point)
+                        let point2 = element.points.advancedBy(1).memory
+                        println(point2)
+                        let point3 = element.points.advancedBy(2).memory
+                        println(point3)
+                    case kCGPathElementCloseSubpath.value:
+                        println("kCGPathElementCloseSubpath")
+                    default:
+                        println("default")
+                }
+
+
+//struct CGPathElement {
+//    var type: CGPathElementType
+//    var points: UnsafeMutablePointer<CGPoint>
 //}
 //
-//
-//extension CGPath {
-//
-//    func dump() {
-//        CGPathApply(self, nil, MyApplier)
-//    }
-//}
+
+            
+            
+            println("Element")
+        }
+    }
+}

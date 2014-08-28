@@ -8,9 +8,6 @@
       location = "group:Playgrounds"
       name = "Playgrounds">
       <FileRef
-         location = "group:SVG.playground">
-      </FileRef>
-      <FileRef
          location = "group:SwiftGraphicsTest.playground">
       </FileRef>
       <FileRef

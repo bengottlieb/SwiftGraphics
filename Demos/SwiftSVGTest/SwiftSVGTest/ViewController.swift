@@ -8,6 +8,7 @@
 
 import Cocoa
 import WebKit
+import SwiftGraphics
 
 class ViewController: NSViewController {
 
@@ -25,9 +26,7 @@ class ViewController: NSViewController {
             XMLDocument = self.representedObject as? NSXMLDocument
 
             var parser = SVGParser()
-            parser.parseElement(XMLDocument.rootElement())
-
-            let document = parser.document
+            let document = parser.parseDocument(XMLDocument)
             bezierPathView.document = document
 
 

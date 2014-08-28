@@ -1,75 +1,34 @@
 //
-//  SVGParser.swift
-//  SwiftSVGTest
+//  SVG.swift
+//  SwiftGraphics
 //
 //  Created by Jonathan Wight on 8/27/14.
 //  Copyright (c) 2014 schwa.io. All rights reserved.
 //
 
-import Foundation
+import CoreGraphics
 
-import SwiftGraphics
-
-// MARK: Utilities
-
-extension CGFloat {
-    init(_ string:String) {
-        self = CGFloat(string._bridgeToObjectiveC().doubleValue)
-    }
-}
-
-func parseDimension(string:String) -> (CGFloat, String)! {
-    let pattern = NSRegularExpression(pattern:"([0-9]+)[ \t]*(px)", options:.CaseInsensitive, error:nil)
-    let range = NSMakeRange(0, string._bridgeToObjectiveC().length)
-    let match = pattern.firstMatchInString(string, options:NSMatchingOptions(), range:range)
-    let scalar = string._bridgeToObjectiveC().substringWithRange(match.rangeAtIndex(0))
-    let unit = string._bridgeToObjectiveC().substringWithRange(match.rangeAtIndex(1))
-    return (CGFloat(scalar), unit)
-}
-
-extension Character {
-    // TODO: LOL
-    var isLowercase : Bool { get { return contains("abcdefghijklmnopqrstuvwyxz", self) } } 
-}
-
-extension NSScanner {
-
-    func scanCGFloat() -> CGFloat? {
-        var d:Double = 0
-        if self.scanDouble(&d) {
-            return CGFloat(d)
-        }
-        else {
-            return nil
-        }
-    }
-
-    func scanCGPoint() -> CGPoint? {
-        let x = scanCGFloat()
-        let y = scanCGFloat()
-        if x != nil && y != nil {
-            return CGPoint(x:x!, y:y!)
-        }
-        else {
-            return nil
-        }
-    }
-}
+// TODO: This is all very WIP. Expect a _lot_ to change.
+// Intent here is to break this code into two - parsing SVG in one part.
+// The second part is about representing a SVG Document as data - so bezier paths
+// And transformation stacks and whatnot.
+// This will allow us to deserialise a SVG document _or_ use a more efficient
+// (binary) file format for scalable graphics.
 
 // MARK: SVGDocument
 
-class SVGDocument {
+public class SVGDocument {
     var bounds : CGRect = CGRectZero
     var commands : [DrawingCommand] = []
 }
 
-enum DrawingCommand {
+public enum DrawingCommand {
     case StartGroup
     case EndGroup
     case Path(CGPath)
 }
 
-extension CGContextRef {
+public extension CGContextRef {
     func draw(document:SVGDocument) {
         self.with {
             let transform = CGAffineTransform(sx:1.0, sy:-1.0).translated(0, -document.bounds.size.height)
@@ -79,6 +38,7 @@ extension CGContextRef {
                     case .Path(let bezierPath):
                         CGContextAddPath(self, bezierPath)
                         CGContextFillPath(self)
+                        bezierPath.dump()
                     default:
                         false
                 }
@@ -89,17 +49,20 @@ extension CGContextRef {
 
 // #############################################################################
 
-class SVGParser {
+public class SVGParser {
 
     var document = SVGDocument()
 
-    func parseDocument(XMLDocument:NSXMLDocument) -> SVGDocument {
+    public init() {
+    }
+
+    public func parseDocument(XMLDocument:NSXMLDocument) -> SVGDocument {
         document = SVGDocument()
         parseSVGElement(XMLDocument.rootElement())
         return document
     }
 
-    internal func parseElement(element:NSXMLElement) {
+    func parseElement(element:NSXMLElement) {
         let name = element.name as String
         switch name {
             case "svg":
@@ -119,7 +82,7 @@ class SVGParser {
         }
     }
 
-    internal func parseSVGElement(element:NSXMLElement) {
+    func parseSVGElement(element:NSXMLElement) {
         
         var x = CGFloat(0)
         var y = CGFloat(0) 
@@ -143,7 +106,7 @@ class SVGParser {
         }
     }
 
-    internal func parseGroupElement(element:NSXMLElement) {
+    func parseGroupElement(element:NSXMLElement) {
         document.commands.append(.StartGroup)
         if let children = element.children {
             for node in children {
@@ -155,15 +118,15 @@ class SVGParser {
         document.commands.append(.EndGroup)
     }
 
-    internal func parsePathElement(element:NSXMLElement) {
+    func parsePathElement(element:NSXMLElement) {
         let path = element.attributeForName("d")!.stringValue
-        let atoms = parsePath(path)
-        let pathCommands = parseAtoms(atoms)
-        let bezierPath = renderCommands(pathCommands)
+        let atoms = stringToAtoms(path)
+        let pathCommands = atomsToPathCommands(atoms)
+        let bezierPath = pathCommandsToPath(pathCommands)
         document.commands.append(.Path(bezierPath))
     }
 
-    internal func parseCircleElement(element:NSXMLElement) {
+    func parseCircleElement(element:NSXMLElement) {
         let cx = CGFloat(element.attributeForName("cx")!.stringValue)
         let cy = CGFloat(element.attributeForName("cy")!.stringValue)
         let r = CGFloat(element.attributeForName("r")!.stringValue)
@@ -171,7 +134,7 @@ class SVGParser {
         document.commands.append(.Path(path))
     }
 
-    internal func parseRectElement(element:NSXMLElement) {
+    func parseRectElement(element:NSXMLElement) {
         let x = CGFloat(element.attributeForName("x")!.stringValue)
         let y = CGFloat(element.attributeForName("y")!.stringValue)
         let width = CGFloat(element.attributeForName("width")!.stringValue)
@@ -180,7 +143,7 @@ class SVGParser {
         document.commands.append(.Path(path))
     }
 
-    internal func parsePolygonElement(element:NSXMLElement) {
+    func parsePolygonElement(element:NSXMLElement) {
         let pointsString = element.attributeForName("points")!.stringValue
 
         let scanner = NSScanner(string:pointsString)
@@ -208,7 +171,6 @@ class SVGParser {
         document.commands.append(.Path(path))
     }
 }
-
 
 // #############################################################################
 
@@ -244,7 +206,7 @@ enum Atom {
     }
 }
 
-func parsePath(path:String) -> [Atom] {
+func stringToAtoms(path:String) -> [Atom] {
     var atoms : [Atom] = []
     let scanner = NSScanner(string: path)
     // TODO: Use real whitespace
@@ -281,7 +243,7 @@ enum PathCommand {
 
 // #############################################################################
 
-func parseAtoms(atoms:[Atom]) -> [PathCommand] {
+func atomsToPathCommands(atoms:[Atom]) -> [PathCommand] {
     var commands : [PathCommand] = []
     var index = 0
     while index < atoms.count {
@@ -383,7 +345,7 @@ func atomsToString(atoms:[Atom]) -> String {
 
 // #############################################################################
 
-func outputPath(commands : [PathCommand]) -> [Atom]! {
+func pathCommandsToAtoms(commands : [PathCommand]) -> [Atom]! {
     var atoms : [Atom] = []
     for command in commands {
         switch command {
@@ -436,7 +398,7 @@ func outputPath(commands : [PathCommand]) -> [Atom]! {
     return atoms
 }
 
-func renderCommands(commands : [PathCommand]) -> CGMutablePath {
+func pathCommandsToPath(commands : [PathCommand]) -> CGMutablePath {
     var bezier = CGPathCreateMutable()
     
     for command in commands {
