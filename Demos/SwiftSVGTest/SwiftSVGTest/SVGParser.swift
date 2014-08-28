@@ -120,8 +120,16 @@ class SVGParser {
     }
 
     internal func parseSVGElement(element:NSXMLElement) {
-        let (x, _) = parseDimension(element.attributeForName("x")!.stringValue)
-        let (y, _) = parseDimension(element.attributeForName("y")!.stringValue)
+        
+        var x = CGFloat(0)
+        var y = CGFloat(0) 
+        
+        if let xElement = element.attributeForName("x") {
+            (x, _) = parseDimension(xElement.stringValue)
+            }
+        if let yElement = element.attributeForName("y") {
+            (y, _) = parseDimension(yElement.stringValue)
+            }
         let (width, _) = parseDimension(element.attributeForName("width")!.stringValue)
         let (height, _) = parseDimension(element.attributeForName("height")!.stringValue)
         document.bounds = CGRect(x:x, y:y, width:width, height:height)
